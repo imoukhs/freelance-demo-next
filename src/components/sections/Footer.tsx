@@ -64,7 +64,7 @@ export default function Footer({ config }: Props) {
           </p>
           {/* Attribution — DO NOT REMOVE */}
           <a
-            href="https://wa.me/2348000000000"
+            href="https://wa.me/2349016529793"
             target="_blank"
             rel="noopener noreferrer"
             className="text-[11px] font-semibold tracking-wide transition-opacity hover:opacity-70"
