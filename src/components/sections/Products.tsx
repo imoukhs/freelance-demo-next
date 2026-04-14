@@ -24,12 +24,7 @@ export default function Products({ config }: { config: NicheConfig }) {
           </p>
         </div>
 
-        {/* Grid — bordered container with gaps */}
-        <div
-          className="border rounded-xl overflow-hidden p-3 sm:p-4"
-          style={{ borderColor: `${config.colors.secondary}18` }}
-        >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             {config.products.map((p, i) => (
               <div
                 key={p.name}
@@ -107,7 +102,6 @@ export default function Products({ config }: { config: NicheConfig }) {
                 </div>
               </div>
             ))}
-          </div>
         </div>
 
       </div>
