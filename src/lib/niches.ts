@@ -18,6 +18,8 @@ import logistics from "@/config/niches/logistics";
 import transport from "@/config/niches/transport";
 import thrift    from "@/config/niches/thrift";
 import cake      from "@/config/niches/cake";
+import clothing  from "@/config/niches/clothing";
+import fitness   from "@/config/niches/fitness";
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 export const NICHES: Record<string, NicheConfig> = {
@@ -26,6 +28,8 @@ export const NICHES: Record<string, NicheConfig> = {
   transport,
   thrift,
   cake,
+  clothing,
+  fitness,
 };
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
