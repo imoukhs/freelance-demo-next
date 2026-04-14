@@ -16,14 +16,14 @@ import { NicheConfig } from "@/lib/types/niche";
 import skincare  from "@/config/niches/skincare";
 import logistics from "@/config/niches/logistics";
 import transport from "@/config/niches/transport";
-// import food from "@/config/niches/food";  // ← uncomment when ready
+import thrift    from "@/config/niches/thrift";
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 export const NICHES: Record<string, NicheConfig> = {
   skincare,
   logistics,
   transport,
-  // food,
+  thrift,
 };
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
