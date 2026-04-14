@@ -17,6 +17,7 @@ import skincare  from "@/config/niches/skincare";
 import logistics from "@/config/niches/logistics";
 import transport from "@/config/niches/transport";
 import thrift    from "@/config/niches/thrift";
+import cake      from "@/config/niches/cake";
 
 // ── Registry ──────────────────────────────────────────────────────────────────
 export const NICHES: Record<string, NicheConfig> = {
@@ -24,6 +25,7 @@ export const NICHES: Record<string, NicheConfig> = {
   logistics,
   transport,
   thrift,
+  cake,
 };
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
