@@ -24,7 +24,7 @@ export interface NicheProduct {
   name: string;     // product/service name
   price: string;    // formatted price string e.g. "₦12,500" or "From ₦1,500"
   tag: string;      // badge label e.g. "Bestseller", "New", "" for none
-  emoji: string;    // single emoji representing the item
+  icon: string;     // Lucide icon name e.g. "Sparkles", "Truck", "Package"
   desc: string;     // 1 short sentence description
 }
 
