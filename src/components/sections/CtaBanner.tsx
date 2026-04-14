@@ -1,44 +1,65 @@
 import { NicheConfig } from "@/lib/types/niche";
 
-interface Props {
-  config: NicheConfig;
-}
-
-export default function CtaBanner({ config }: Props) {
+export default function CtaBanner({ config }: { config: NicheConfig }) {
   const { ctaBanner } = config;
 
   return (
-    <section className="py-6 px-5" style={{ backgroundColor: "var(--color-bg)" }}>
-      <div className="max-w-6xl mx-auto">
-        <div
-          className="relative overflow-hidden rounded-3xl px-8 py-16 sm:px-14 sm:py-20 text-center reveal"
+    <section
+      className="py-32 px-6 relative overflow-hidden"
+      style={{ backgroundColor: "var(--color-accent)" }}
+    >
+      {/* Decorative oversized text — faint watermark */}
+      <div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+        aria-hidden
+      >
+        <span
+          className="font-display font-bold whitespace-nowrap"
           style={{
-            background: `linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%)`,
+            fontSize: "clamp(6rem, 20vw, 18rem)",
+            color: "var(--color-primary)",
+            opacity: 0.04,
+            lineHeight: 1,
           }}
         >
-          {/* Background circles */}
-          <div className="absolute -top-16 -right-16 w-64 h-64 rounded-full opacity-10 bg-white pointer-events-none" />
-          <div className="absolute -bottom-12 -left-12 w-48 h-48 rounded-full opacity-10 bg-white pointer-events-none" />
+          {config.businessName}
+        </span>
+      </div>
 
-          <div className="relative z-10 max-w-xl mx-auto">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl text-white leading-snug mb-4">
-              {ctaBanner.heading}
-            </h2>
-            <p className="text-white/65 text-sm sm:text-base mb-10 leading-relaxed">
-              {ctaBanner.sub}
-            </p>
-            <a
-              href="#"
-              className="inline-block bg-white font-bold text-sm tracking-wide px-9 py-4 rounded-full transition-all hover:opacity-90 hover:-translate-y-0.5 shadow-xl"
-              style={{
-                color: "var(--color-primary)",
-                boxShadow: "0 12px 40px rgba(0,0,0,0.2)",
-              }}
-            >
-              {ctaBanner.btnText}
-            </a>
-          </div>
-        </div>
+      <div className="relative max-w-4xl mx-auto text-center reveal">
+
+        <p className="label mb-6">{config.category}</p>
+
+        <h2
+          className="font-display font-bold leading-[1.05] mb-8"
+          style={{
+            color:    "var(--color-secondary)",
+            fontSize: "clamp(2.4rem, 6vw, 4.5rem)",
+            maxWidth: "18ch",
+            margin:   "0 auto 2rem",
+          }}
+        >
+          {ctaBanner.heading}
+        </h2>
+
+        <p
+          className="text-[15px] leading-relaxed mb-12 mx-auto"
+          style={{ color: `${config.colors.text}60`, maxWidth: "42ch" }}
+        >
+          {ctaBanner.sub}
+        </p>
+
+        <a
+          href="#"
+          className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-white text-[13px] font-semibold tracking-wide transition-all hover:opacity-85"
+          style={{
+            backgroundColor: "var(--color-secondary)",
+            boxShadow: "0 10px 40px var(--color-secondary)25",
+          }}
+        >
+          {ctaBanner.btnText}
+          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 14 14"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
+        </a>
       </div>
     </section>
   );

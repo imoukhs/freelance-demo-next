@@ -1,110 +1,96 @@
 import { NicheConfig } from "@/lib/types/niche";
 
-interface Props {
-  config: NicheConfig;
-}
-
-export default function Hero({ config }: Props) {
+export default function Hero({ config }: { config: NicheConfig }) {
   const { hero } = config;
 
   return (
-    <section className="relative min-h-[88vh] flex flex-col items-center justify-center text-center px-5 pt-10 pb-20 overflow-hidden">
-      {/* Layered background blobs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="absolute -top-24 -right-24 w-[500px] h-[500px] rounded-full opacity-30 blur-3xl"
-          style={{ backgroundColor: "var(--color-primary)" }}
-        />
-        <div
-          className="absolute -bottom-16 -left-16 w-[380px] h-[380px] rounded-full opacity-20 blur-3xl"
-          style={{ backgroundColor: "var(--color-accent)" }}
-        />
-        {/* Subtle dot grid */}
-        <div
-          className="absolute inset-0 opacity-[0.04]"
-          style={{
-            backgroundImage: `radial-gradient(circle, var(--color-secondary) 1px, transparent 1px)`,
-            backgroundSize: "28px 28px",
-          }}
-        />
-      </div>
+    <section className="relative min-h-[92vh] flex flex-col justify-center px-6 pt-10 pb-24 overflow-hidden">
 
-      <div className="relative z-10 max-w-2xl mx-auto">
-        {/* Badge */}
-        <div
-          className="inline-flex items-center gap-2 mb-7 px-4 py-2 rounded-full text-[11px] font-semibold tracking-widest uppercase animate-fadeUp"
-          style={{
-            backgroundColor: "var(--color-accent)",
-            color: "var(--color-primary)",
-            border: "1px solid var(--color-primary)20",
-          }}
-        >
-          {hero.badgeText}
+      {/* Ambient glow — top right */}
+      <div
+        className="absolute top-0 right-0 w-[55vw] h-[55vw] max-w-[640px] max-h-[640px] pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at top right, var(--color-accent) 0%, transparent 65%)",
+        }}
+      />
+
+      {/* Thin vertical rule — left edge */}
+      <div
+        className="absolute left-6 top-1/4 bottom-1/4 w-px hidden md:block"
+        style={{ backgroundColor: "var(--color-primary)", opacity: 0.2 }}
+      />
+
+      <div className="relative max-w-6xl mx-auto w-full">
+
+        {/* Badge line */}
+        <div className="flex items-center gap-3 mb-8 animate-fadeUp">
+          <span className="label">{hero.badgeText}</span>
         </div>
 
-        {/* Heading */}
+        {/* Headline — editorial scale */}
         <h1
-          className="font-display font-bold text-[2.6rem] leading-[1.12] md:text-6xl md:leading-[1.1] mb-6 animate-fadeUp delay-100"
-          style={{ color: "var(--color-secondary)" }}
+          className="font-display font-bold leading-[1.06] mb-8 animate-fadeUp delay-100"
+          style={{
+            color:    "var(--color-secondary)",
+            fontSize: "clamp(2.8rem, 7vw, 5.5rem)",
+            maxWidth: "16ch",
+          }}
         >
           {hero.heading}
         </h1>
 
+        {/* Hairline separator */}
+        <div className="w-16 h-px mb-8 animate-fadeUp delay-200" style={{ backgroundColor: "var(--color-primary)" }} />
+
         {/* Subheading */}
         <p
-          className="text-[15px] md:text-lg leading-relaxed max-w-lg mx-auto mb-10 animate-fadeUp delay-200"
-          style={{ color: `${config.colors.text}70` }}
+          className="text-[15px] md:text-base leading-[1.85] mb-12 animate-fadeUp delay-200"
+          style={{ color: `${config.colors.text}65`, maxWidth: "42ch" }}
         >
           {hero.subheading}
         </p>
 
         {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-3 justify-center animate-fadeUp delay-300">
+        <div className="flex flex-wrap items-center gap-4 animate-fadeUp delay-300">
           <a
             href={hero.ctaLink}
-            className="px-8 py-3.5 rounded-full text-white font-semibold text-sm tracking-wide transition-all hover:opacity-85 hover:-translate-y-0.5 shadow-lg"
+            className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white text-[13px] font-semibold tracking-wide transition-all hover:opacity-85"
             style={{
               backgroundColor: "var(--color-primary)",
-              boxShadow: "0 8px 28px var(--color-primary)45",
+              boxShadow: "0 8px 32px var(--color-primary)35",
             }}
           >
             {hero.ctaText}
+            <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 14 14"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
           </a>
           <a
             href="#about"
-            className="px-8 py-3.5 rounded-full font-medium text-sm tracking-wide transition-all hover:-translate-y-0.5"
-            style={{
-              color: "var(--color-secondary)",
-              border: "1.5px solid var(--color-secondary)20",
-            }}
+            className="text-[13px] font-medium tracking-wide transition-all"
+            style={{ color: `${config.colors.text}55` }}
+            onMouseEnter={e => (e.currentTarget.style.color = config.colors.primary)}
+            onMouseLeave={e => (e.currentTarget.style.color = `${config.colors.text}55`)}
           >
-            Our Story
+            Our story →
           </a>
         </div>
 
-        {/* Social proof strip */}
+        {/* Stats row — only if stats exist */}
         {config.stats && config.stats.length > 0 && (
-          <div className="mt-14 flex items-center justify-center gap-8 animate-fadeUp delay-400">
-            {config.stats.map((stat, i) => (
-              <div key={stat.label} className="flex flex-col items-center">
-                <span
-                  className="font-display font-bold text-xl"
+          <div
+            className="mt-20 pt-8 flex flex-wrap gap-x-12 gap-y-5 border-t animate-fadeUp delay-400"
+            style={{ borderColor: `${config.colors.secondary}10` }}
+          >
+            {config.stats.map(s => (
+              <div key={s.label}>
+                <div
+                  className="font-display font-bold text-2xl leading-none mb-1"
                   style={{ color: "var(--color-primary)" }}
                 >
-                  {stat.num}
-                </span>
-                <span
-                  className="text-[11px] tracking-wide uppercase mt-0.5"
-                  style={{ color: `${config.colors.text}55` }}
-                >
-                  {stat.label}
-                </span>
-                {i < (config.stats?.length ?? 0) - 1 && (
-                  <div
-                    className="absolute"
-                    style={{ display: "none" }}
-                  />
-                )}
+                  {s.num}
+                </div>
+                <div className="text-[11px] tracking-widest uppercase" style={{ color: `${config.colors.text}45` }}>
+                  {s.label}
+                </div>
               </div>
             ))}
           </div>
