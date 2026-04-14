@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { NicheConfig } from "@/lib/types/niche";
 
 interface Props {
@@ -44,6 +45,13 @@ export default function Footer({ config }: Props) {
               {link}
             </a>
           ))}
+          <Link
+            href="/pricing"
+            className="text-xs font-medium transition-colors hover:text-white"
+            style={{ color: `${config.colors.bg}45` }}
+          >
+            Pricing
+          </Link>
         </nav>
 
         {/* Bottom */}
